@@ -3,6 +3,10 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: #888;
+  min-width: 100vw;
+  min-height: 100vh;
+  align-content: center;
 }
 
 .logo {

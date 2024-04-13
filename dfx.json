@@ -2,7 +2,25 @@
   "canisters": {
     "backend": {
       "type": "motoko",
-      "main": "backend/Backend.mo"
+      "main": "backend/Backend.mo",
+      "dependencies": ["icrc1_ledger_canister"]
+    },
+    "icrc1_ledger_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/30a4021d7463e4e9ee96b3f279cf38e01b1028ca/rs/rosetta-api/icrc1/ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/30a4021d7463e4e9ee96b3f279cf38e01b1028ca/canisters/ic-icrc1-ledger.wasm.gz"
+    },
+    "internet_identity": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz",
+      "shrink": false,
+      "remote": {
+        "candid": "internet_identity.did",
+        "id": {
+          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+      }
     },
     "frontend": {
       "dependencies": ["backend"],
