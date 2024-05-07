@@ -8,7 +8,7 @@ const TransactionTable = ({ data, tokenName }) => {
         <tr>
           <th className=" px-4 py-2">ID</th>
           <th className=" px-4 py-2">Kind</th>
-          <th className=" px-4 py-2">From</th>
+          <th className=" px-4 py-2 ">From</th>
           <th className=" px-4 py-2">To</th>
           <th className=" px-4 py-2">Amount ({tokenName.token_symbol})</th>
           {/* <th className=" px-4 py-2">Timestamp</th> */}

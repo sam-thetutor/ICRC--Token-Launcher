@@ -59,12 +59,12 @@ const Dashboard = () => {
                     />
                 </div>
                 <div className="flex justify-center items-center gap-2 p-4">
-                    <IoIosNotificationsOutline size={25} className="hover:cursor-pointer" />
-                    <TiMessages size={25} className="hover:cursor-pointer" />
+                    <IoIosNotificationsOutline size={35} className="hover:cursor-pointer" />
+                    <TiMessages size={35} className="hover:cursor-pointer" />
                 </div>
             </div>
             {/* body of the dashboard */}
-            <div className="flex justify-center m-2 w-full h-[550px]">
+            <div className="flex justify-center m-1 w-full h-[550px]">
                 {
                     searchPrincipal ?
 

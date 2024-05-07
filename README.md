@@ -1,9 +1,12 @@
 # IC-Explorer
 
+![](./src/assets/ex1.PNG)
+
+![](./src/assets/ex2.PNG)
+
+![](./src/assets/video.mp4)
 A minimal explorer Dapp build on the Internet Computer blockchain with written in React and Tailwind css that allows you to see token balances of your different principal addresses. 
 Currently, it supports only ckBTC and ICP, but you can add more token ledger canisters
-
-It
 
 How to run locally
 
