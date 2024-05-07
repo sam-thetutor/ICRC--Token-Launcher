@@ -1,14 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  background-color: #888;
-  min-width: 100vw;
+  padding: 0;
+  background-color: #11131f;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   min-height: 100vh;
-  align-content: center;
+  min-width: 100vw;
+  color: white;
+  text-align: center;
 }
 
+/* color for numbers #1BD8F4 */
+/* color fow the boxes #1D1F31 */
+/* color for some titles #3D5393 */
 .logo {
   height: 6em;
   padding: 1.5em;

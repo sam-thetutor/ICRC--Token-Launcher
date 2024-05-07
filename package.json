@@ -23,7 +23,9 @@
     "@dfinity/principal": "^1.2.0",
     "@dfinity/utils": "^2.1.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.2.1",
+    "react-spinners": "^0.13.8"
   },
   "devDependencies": {
     "@tanstack/react-query": "^5.29.2",
