@@ -11,13 +11,8 @@
     'Lucida Sans', Arial, sans-serif;
   min-height: 100vh;
   min-width: 100vw;
-  color: white;
-  text-align: center;
 }
 
-/* color for numbers #1BD8F4 */
-/* color fow the boxes #1D1F31 */
-/* color for some titles #3D5393 */
 .logo {
   height: 6em;
   padding: 1.5em;

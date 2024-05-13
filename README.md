@@ -1,17 +1,11 @@
-# IC-Explorer
+# ICRC2 Token Launcher DApp
 
-![](./src/assets/ex1.PNG)
 
-![](./src/assets/ex2.PNG)
-
-![](./src/assets/video.mp4)
-A minimal explorer Dapp build on the Internet Computer blockchain with written in React and Tailwind css that allows you to see token balances of your different principal addresses. 
-Currently, it supports only ckBTC and ICP, but you can add more token ledger canisters
-
-How to run locally
-
-- clone the Github repo
-- install the dependencies
-
-- Run the `deploycanisters.sh` to install the necessary canisters
-- run `npm start` to view the project in the browser
+ dfx canister --network local call icp_ledger_canister icrc1_transfer '
+   (record {
+     to=(record {
+       owner=(principal "p3aps-jg7md-6znzf-aaeth-zrcge-ahhrf-z27qd-2c2el-yadgt-l4kvf-yae")
+     });
+     amount=50000000000
+   })
+ '
