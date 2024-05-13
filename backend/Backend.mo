@@ -10,7 +10,6 @@ import Nat "mo:base/Nat";
 import Nat64 "mo:base/Nat64";
 import ICRCLedger "canister:icp_ledger_canister";
 
-//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
 
 actor class TokenStaking()=this{
 
