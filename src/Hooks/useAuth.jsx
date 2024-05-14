@@ -89,7 +89,7 @@ const useAuth = () => {
     const agent = await createAgent({
       identity,
       host: HOST,
-      fetchRootKey:true,
+      // fetchRootKey:true,
       //  verifyQuerySignatures: false
     });
 
