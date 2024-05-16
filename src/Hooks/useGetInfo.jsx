@@ -62,7 +62,6 @@ const useGetInfo = () => {
     }
 
 
-
     const usrBalance = useQuery({
         queryKey: ['userICPBalance'],
         queryFn: loadUserICPBalance(),
@@ -72,7 +71,6 @@ const useGetInfo = () => {
         queryKey: ['userCreatedTokens'],
         queryFn: loadUserCreatedTokens(),
     });
-
 
 
     async function invalidateUserICPBalance() {
@@ -136,10 +134,10 @@ const useGetInfo = () => {
                 await actor?.icrc1_total_supply(),
                 await actor?.getTransactionHistory()
             ])
-            console.log("transactions from ther : ",transactions)
+            console.log("transactions from ther : ", transactions)
             const formTrans = formatTokenTransactons(transactions)
-console.log("transactions after there :",formTrans)
-            setTokenDetais({ name, symbol, logo, decimals, totalSupply, transactions: formTrans, canisterId}),
+            console.log("transactions after there :", formTrans)
+            setTokenDetais({ name, symbol, logo, decimals, totalSupply, transactions: formTrans, canisterId }),
                 setTokenActor(actor),
                 setUserBalance(Number(userBal) / 1e8)
         } catch (error) {

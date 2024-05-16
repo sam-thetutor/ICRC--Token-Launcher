@@ -46,7 +46,6 @@ const CreateToken = () => {
     if (!icpActor || !backendActor) return
     try {
       setIsLoading(true)
-      //approve the backend to deduct the creation fee.
       await icpActor?.icrc2_approve({
         fee: [],
         memo: [],
@@ -60,7 +59,6 @@ const CreateToken = () => {
           subaccount: []
         }
       })
-      //call the backend canister to create the new token
 
       const newTokenResults = await backendActor?.createNewToken(
         formData.name,
@@ -97,27 +95,10 @@ const CreateToken = () => {
     });
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setFormData({
-      ...formData,
-      image: file,
-    });
-  };
-
-
-
-
-
-
-
   return (
 
     <>
       {principal ?
-
-
-
         <div className='flex flex-col text-white gap-3 items-center'>
           <h2 className='text-3xl mt-[30px] '>Create Token</h2>
           <div className="max-w-md mx-auto p-6 text-black bg-white rounded-md shadow-md text-xl">
@@ -155,9 +136,6 @@ const CreateToken = () => {
                 placeholder="total supply"
                 className="block w-full mt-2 p-2 border border-gray-300 rounded-md"
               />
-              {/* <div className='flex flex-col gap-1 justify-center items-center border mt-2 p-2'> */}
-
-
               <input
                 type="text"
                 name="image"
@@ -182,10 +160,6 @@ const CreateToken = () => {
               </div>
             </form>
           </div>
-
-
-
-
         </div>
         :
         <div className='flex flex-col text-4xl text-white gap-3 justify-center w-full items-center'>

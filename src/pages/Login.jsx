@@ -2,7 +2,6 @@ import React from 'react'
 import useAuth from '../Hooks/useAuth'
 import bgImage from "../assets/crypto2.jpg"
 const Login = () => {
-    const {LoginButton} = useAuth()
   return (
     <div
      className='flex flex-col justify-center items-center'>

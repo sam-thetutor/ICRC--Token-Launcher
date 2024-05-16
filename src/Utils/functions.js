@@ -1,8 +1,6 @@
 import { createActor } from "./createActor"
 import { idlFactory as tokenFactory } from "./icrctoken.did"
 
-
-
 export function shorten17String(str) {
   if (!str) return;
   if (str.length <= 11) {
@@ -39,13 +37,9 @@ export function shorten20String(str) {
 
 export const getTokenData = async (tokens, agent) => {
   let allTokenData = []
-  console.log("all tokens here :", tokens)
   if (tokens.length < 1) return []
   try {
     for (const singleToken of tokens) {
-
-      //create the actor
-      // console.log("all token :", singleToken?.toString())
       let actor = createActor(singleToken?.toString(), tokenFactory, { agent })
       const [name, symbol, logo, decimals, totalSupply, transactions] = await Promise.all([
         await actor?.icrc1_name(),
@@ -55,12 +49,8 @@ export const getTokenData = async (tokens, agent) => {
         await actor?.icrc1_total_supply(),
         await actor?.getTransactionHistory()
       ])
-
-      // console.log("token Data :", name, symbol, logo, decimals, transactions, singleToken)
       allTokenData.push({ name, symbol, logo, decimals, totalSupply, transactions, canisterId: singleToken?.toString() })
     }
-
-
     return allTokenData
 
   } catch (error) {
@@ -114,92 +104,19 @@ export const formatTokenTransactons = (transactions) => {
         transTo = trans.operation.Transfer.to.owner?.toString(),
         timeStamp = trans.timestamp,
         transFee = trans.operation.Transfer.fee[0]
-
     }
-
 
     userTransactions.push({
       kind: transKind,
       amount: Number(transAmount) / 1e8,
       from: transFrom,
       to: transTo,
-      timestamp: Number(timeStamp)/1e6,
+      timestamp: Number(timeStamp) / 1e6,
     });
-
-
   }
-
-
   return userTransactions
 
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-// export function transformTransactionArray(transactions) {
-//   //   const formattedPrices = [];
-//   var userTransactions = [];
-
-//   for (const trans of transactions) {
-//     var transKind;
-//     var transAmount;
-//     var transFrom;
-//     var transTo;
-//     var timeStamp;
-//     var transactionId;
-//     // if (trans.transaction.kind !== "") {
-//     //   transKind = trans.transaction.kind;
-//     //   transAmount = trans.transaction.transfer[0].amount;
-//     //   transFrom = trans.transaction.transfer[0].from;
-//     //   transTo = trans.transaction.transfer[0].to;
-//     //   timeStamp = trans.transaction.transfer[0].created_at_time[0];
-//     // } else
-//     if (trans.operation.Mint) {
-//       transactionId = trans.id;
-//       transKind = 'mint';
-//       transAmount = trans.operation.Mint[0].amount;
-//       transFrom = 'mintAccount';
-//       transTo = trans.transaction.mint[0].to.owner.toString();
-//       timeStamp = trans.transaction.mint[0].created_at_time[0];
-//     } else if (trans.transaction.burn.length !== 0) {
-//       transKind = 'burn';
-//       transactionId = trans.id;
-//       transAmount = trans.transaction.burn[0].amount;
-//       transFrom = trans.transaction.burn[0].from.owner.toString();
-//       transTo = 'mintAccount';
-//       timeStamp = trans.transaction.burn[0].created_at_time[0];
-//     } else if (trans.transaction.transfer.length !== 0) {
-//       transKind = 'transfer';
-//       transactionId = trans.id;
-//       transAmount = trans.transaction.transfer[0].amount;
-//       transFrom = trans.transaction.transfer[0].from.owner.toString();
-//       transTo = trans.transaction.transfer[0].to.owner.toString();
-//       timeStamp = trans.transaction.transfer[0].created_at_time[0];
-//     }
-
-//     userTransactions.push({
-//       kind: transKind,
-//       amount: Number(transAmount) / 1e9,
-//       from: transFrom,
-//       to: transTo,
-//       timestamp: timeStamp,
-//       id: Number(transactionId),
-//     });
-//   }
-//   return userTransactions;
-// }
-
-
 
 
 

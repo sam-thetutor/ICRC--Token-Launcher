@@ -10,7 +10,6 @@ const Header = () => {
         queryKey: ['principal']
     })
 
-   
     const navigate= useNavigate()
 
     return (

@@ -46,11 +46,6 @@ const useAuth = () => {
   const queryClient = useQueryClient();
   const [buttonLoading, setButtonLoading] = useState(false);
 
-
-
-
-
-
   const handleLogin = async () => {
     setButtonLoading(true);
     try {
@@ -90,22 +85,16 @@ const useAuth = () => {
     const agent = await createAgent({
       identity,
       host: HOST,
-      // fetchRootKey:true,
-      //  verifyQuerySignatures: false
     });
 
     const actor = createActor(backendCanisterID, BackendFactory, { agent });
     const icpActor = createActor(ICP_Canister_ID, LedgerFactory, { agent })
 
-
-
-    //get the icp balance of the user
     const userBal = await icpActor?.icrc1_balance_of({
       owner: Principal.fromText(principal?.toString()),
       subaccount: []
     })
 
-    //fetch the user info and set it there.
     const tokens = await actor?.get_all_tokens_for_user(Principal.fromText(principal?.toString()))
     let tokenData = await getTokenData(tokens, agent)
     console.log("formateed data :", tokenData)
@@ -121,10 +110,6 @@ const useAuth = () => {
     );
     await queryClient.setQueryData(['principal'], principal?.toString());
     await queryClient.setQueryData(['authClient'], authClient);
-
-
-
-    console.log('all tokens for the user :', tokenData, userBal);
     await queryClient.setQueryData(['userICPBalance'], (Number(userBal) / 1e8));
     await queryClient.setQueryData(['userCreatedTokens'], tokenData);
 
@@ -137,8 +122,6 @@ const useAuth = () => {
     if (tokens.length < 1) return []
     try {
       for (const singleToken of tokens) {
-
-        //create the actor
         let actor = createActor(singleToken?.toString(), tokenFactory, { agent })
         const [name, symbol, logo, decimals, totalSupply, transactions] = await Promise.all([
           await actor?.icrc1_name(),
@@ -150,15 +133,8 @@ const useAuth = () => {
         ])
 
         const formTrans = formatTokenTransactons(transactions)
-
-        // console.log("ssssssssssssssss :",transactions);
-
-        
-        // console.log("token Data :", name, symbol, logo, decimals, transactions, singleToken)
         allTokenData.push({ name, symbol, logo, decimals, totalSupply, transactions:formTrans, canisterId: singleToken?.toString() })
       }
-
-
       return allTokenData
 
     } catch (error) {
@@ -166,14 +142,6 @@ const useAuth = () => {
       return []
     }
   }
-
-
-
-
-
-
-
-
 
   const LoginButton = () => {
     return (

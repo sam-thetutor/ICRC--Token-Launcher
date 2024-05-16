@@ -5,10 +5,7 @@ import { IoCopyOutline } from "react-icons/io5";
 function copyButton({ textToCopy }) {
 
     const copyToClipboard = async (text) => {
-        if (!navigator.clipboard) {
-            return;
-        }
-
+        if (!navigator.clipboard) { return; }
         try {
             await navigator.clipboard.writeText(text);
             alert("text copied")

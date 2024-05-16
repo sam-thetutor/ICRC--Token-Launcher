@@ -18,9 +18,6 @@ const MyTokens = () => {
     <>
       {
         principal ?
-
-
-
           <div className='flex flex-col justify-center  text-white items-center gap-1'>
             <h2 className='text-3xl mt-[30px] '> My Tokens</h2>
             <div className='grid grid-cols-1 md:grid-cols-2 mt-10 px-10 md:px-15 lg:px-32 lg:grid-cols-2 gap-2 justify-center items-center '>

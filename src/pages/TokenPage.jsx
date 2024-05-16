@@ -27,9 +27,7 @@ const TokenPage = () => {
       [name]: value,
     });
   };
-// console.log(new Date(1715850332178973200/1000000).toLocaleString())
 
-// Return the date in a readable format
 
   useEffect(() => {
     if (tokenId == null) return
@@ -158,7 +156,6 @@ console.log("transfer results :",results)
         }
       </div>
       <div>
-
         {/* <ExcelUploader/> */}
       </div>
     </div>
