@@ -20,7 +20,6 @@ const Header = () => {
                 <ul className='flex text-xl gap-2 justify-center items-center'>
                     <li className='p-2 hover:cursor-pointer hover:bg-red-200 rounded-md' onClick={()=>navigate("/dashboard/create")}>Create</li>
                     <li className='p-2 hover:cursor-pointer hover:bg-red-200 rounded-md' onClick={()=>navigate("/dashboard/mytokens")}>My Tokens</li>
-                    <li className='p-2 hover:cursor-pointer hover:bg-red-200 rounded-md'>Launchpad</li>
                 </ul>
             </div>
             {principal ? <Profile /> : <LoginButton />}

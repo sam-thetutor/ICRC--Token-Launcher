@@ -9,7 +9,8 @@ import { ClipLoader } from 'react-spinners';
 import { Principal } from '@dfinity/principal';
 import { createActor } from "../Utils/createActor"
 import { idlFactory as tokenFactory } from "../Utils/icrctoken.did"
-import { createActor as createTokenActor } from "../declarations/tokenActor"
+import { formatTokenTransactons } from '../Utils/functions';
+// import {getTokenData} from "../Utils/functions"
 const IdentityHost =
   process.env.DFX_NETWORK === 'ic'
     ? 'https://identity.ic0.app/#authorize'
@@ -107,6 +108,7 @@ const useAuth = () => {
     //fetch the user info and set it there.
     const tokens = await actor?.get_all_tokens_for_user(Principal.fromText(principal?.toString()))
     let tokenData = await getTokenData(tokens, agent)
+    console.log("formateed data :", tokenData)
 
     await queryClient.setQueryData(['agent'], agent);
     await queryClient.setQueryData(['icpActor'], icpActor);
@@ -130,27 +132,30 @@ const useAuth = () => {
     navigate('/dashboard/create');
   }
 
-
   const getTokenData = async (tokens, agent) => {
     let allTokenData = []
-
     if (tokens.length < 1) return []
     try {
       for (const singleToken of tokens) {
 
         //create the actor
-        console.log("all token :", singleToken?.toString())
         let actor = createActor(singleToken?.toString(), tokenFactory, { agent })
-        const [name, symbol, logo, decimals, transactions] = await Promise.all([
+        const [name, symbol, logo, decimals, totalSupply, transactions] = await Promise.all([
           await actor?.icrc1_name(),
           await actor?.icrc1_symbol(),
           await actor?.icrc1_logo(),
           await actor?.icrc1_decimals(),
+          await actor?.icrc1_total_supply(),
           await actor?.getTransactionHistory()
         ])
 
-        console.log(name, symbol, logo, decimals, transactions, singleToken)
-        // allTokenData.push({ name, symbol, logo, decimals, transactions, canisterId: singleToken })
+        const formTrans = formatTokenTransactons(transactions)
+
+        // console.log("ssssssssssssssss :",transactions);
+
+        
+        // console.log("token Data :", name, symbol, logo, decimals, transactions, singleToken)
+        allTokenData.push({ name, symbol, logo, decimals, totalSupply, transactions:formTrans, canisterId: singleToken?.toString() })
       }
 
 
@@ -160,9 +165,8 @@ const useAuth = () => {
       console.log("error in getting data about tokens :", error)
       return []
     }
-
-
   }
+
 
 
 
@@ -173,7 +177,7 @@ const useAuth = () => {
 
   const LoginButton = () => {
     return (
-      <button className='border border-black' onClick={handleLogin}>
+      <button className='border p-3 bg-red-500 text-white' onClick={handleLogin}>
         Login
       </button>
     )
@@ -202,9 +206,6 @@ const useAuth = () => {
     await queryClient.setQueryData(['authClient'], null);
     await queryClient.setQueryData(['userICPBalance'], null);
     await queryClient.setQueryData(['userCreatedTokens'], null);
-
-
-
     handleAuthenticated(authClient);
   }
 

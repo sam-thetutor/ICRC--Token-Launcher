@@ -18,7 +18,7 @@ function copyButton({ textToCopy }) {
         }
     }
     return (
-        <IoCopyOutline color='black curso-pointer' size={15} onClick={() => copyToClipboard(textToCopy)} />
+        <IoCopyOutline color='black' className='cursor-pointer' size={15} onClick={() => copyToClipboard(textToCopy)} />
     )
 }
 

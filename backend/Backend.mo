@@ -11,7 +11,7 @@ import Nat64 "mo:base/Nat64";
 import ICRCLedger "canister:icp_ledger_canister";
 
 
-actor class TokenStaking()=this{
+actor class TokenLauncher()=this{
 
   private stable var UsersArray : [(Principal, [Principal])] = [];
   private var UsersHashMap = HashMap.fromIter<Principal, [Principal]>(
@@ -75,7 +75,7 @@ type BlockIndex = Nat;
         let newTokenActor = await ICRCTokenClass.Ledger({
           initial_mints = initialMints;
           minting_account = {
-            owner = caller;
+            owner = Principal.fromActor(this);
             subaccount = null;
           };
           token_logo=_logo;
