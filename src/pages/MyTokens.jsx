@@ -3,7 +3,6 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const MyTokens = () => {
-
   const { data: principal } = useQuery({
     queryKey: ['principal']
   })
@@ -14,20 +13,19 @@ const MyTokens = () => {
   })
 
   return (
-
     <>
       {
         principal ?
-          <div className='flex flex-col justify-center  text-white items-center gap-1'>
-            <h2 className='text-3xl mt-[30px] '> My Tokens</h2>
-            <div className='grid grid-cols-1 md:grid-cols-2 mt-10 px-10 md:px-15 lg:px-32 lg:grid-cols-2 gap-2 justify-center items-center '>
+          <div className='flex flex-col justify-center text-white items-center gap-1'>
+            <h2 className='text-3xl mt-[30px] text-blue-500'> My Tokens</h2>
+            <div className='grid grid-cols-1 md:grid-cols-2 mt-10 px-10 md:px-15 lg:px-32 lg:grid-cols-2 gap-2 justify-center items-center'>
               {
                 userCreatedTokens?.map((item, index) => (
-                  <div key={index} className='flex gap-2 justify-center items-center border p-2 rounded-lg'>
+                  <div key={index} className='flex gap-2 justify-center items-center border border-blue-500 p-2 rounded-lg'>
                     <img src={item.logo} alt="token logo" className='h-16 w-16 rounded-full' />
-                    <div className='flex flex-col gap-2 justify-center items-center px-6 cursor-pointer' onClick={() => navigate('./' + item.canisterId)}>
+                    <div className='flex flex-col gap-2 justify-center items-center px-6 cursor-pointer text-blue-500 hover:text-orange-500' onClick={() => navigate('./' + item.canisterId)}>
                       <div className='flex justify-between items-center w-[150px]'>
-                        <div className='flex flex-col  justify-center items-center'>
+                        <div className='flex flex-col justify-center items-center'>
                           <h4 className='text-gray-400'>name</h4>
                           {item.name}
                         </div>
@@ -61,8 +59,6 @@ const MyTokens = () => {
               </a>
             </div>
           </div>
-
-
       }
     </>
   )

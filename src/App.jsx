@@ -4,7 +4,6 @@ import Login from './pages/Login'
 import SharedLayout from './pages/SharedLayout'
 import TokenPage from './pages/TokenPage'
 import Header from './components/Header'
-import Dashboard from './pages/Dashboard'
 import CreateToken from './pages/CreateToken'
 import MyTokens from './pages/MyTokens'
 
@@ -16,7 +15,7 @@ const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Login />} />
           <Route path="dashboard" element={<SharedLayout />}>
-          <Route index element={<Dashboard />} />
+          <Route index element={<CreateToken />} />
           <Route path="create" element={<CreateToken/>}/>
           <Route path="mytokens" element={<MyTokens/>}/>
           <Route path="mytokens/:tokenId" element={<TokenPage/>}/>

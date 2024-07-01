@@ -14,7 +14,7 @@ import { formatTokenTransactons } from '../Utils/functions';
 const IdentityHost =
   process.env.DFX_NETWORK === 'ic'
     ? 'https://identity.ic0.app/#authorize'
-    : `http://localhost:4943?canisterId=${process.env.CANISTER_ID_INTERNET_IDENTITY}#authorize`;
+    : `http://localhost:4943?canisterId=bw4dl-smaaa-aaaaa-qaacq-cai#authorize`;
 //One day in nanoseconds
 
 const HOST =
@@ -145,14 +145,14 @@ const useAuth = () => {
 
   const LoginButton = () => {
     return (
-      <button className='border p-3 bg-red-500 text-white' onClick={handleLogin}>
+      <button className='border bg-red-500 text-white' onClick={handleLogin}>
         Login
       </button>
     )
   }
   const LogoutButton = () => {
     return (
-      <button onClick={logout} >
+      <button className='text-black' onClick={logout} >
         logout
       </button>
     )

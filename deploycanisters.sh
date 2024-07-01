@@ -51,7 +51,7 @@ dfx deploy --specified-id ryjl3-tyaaa-aaaaa-aaaba-cai icp_ledger_canister --argu
  dfx canister --network local call icp_ledger_canister icrc1_transfer '
    (record {
      to=(record {
-       owner=(principal "4c6xn-toj7o-rbxif-jfg2c-4oq4f-rriyl-2q33d-hiy6v-cq36s-jeqlx-tqe")
+       owner=(principal "mmsdc-nylul-m6su7-5erin-6vmcu-ucy7l-uj6e6-n4ow7-htu4a-5zum4-qae")
      });
      amount=9000000000
    })

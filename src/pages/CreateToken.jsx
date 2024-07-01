@@ -28,15 +28,12 @@ const CreateToken = () => {
     queryKey: ['principal']
   })
 
-
-
   const { mutateAsync: HandleCreateNewToken } = useMutation({
     mutationFn: (data) => handleSubmit(data),
     onSuccess: async () => {
       await invalidateUserCreatedTokens(),
         await invalidateUserICPBalance()
       setIsLoading(false)
-
     },
   });
 
@@ -78,14 +75,10 @@ const CreateToken = () => {
 
       console.log("new token results :", newTokenResults)
       return newTokenResults;
-
-
     } catch (error) {
       console.log("error in creating new token :", error)
     }
-
   };
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -96,12 +89,11 @@ const CreateToken = () => {
   };
 
   return (
-
     <>
       {principal ?
         <div className='flex flex-col text-white gap-3 items-center'>
-          <h2 className='text-3xl mt-[30px] '>Create Token</h2>
-          <div className="max-w-md mx-auto p-6 text-black bg-white rounded-md shadow-md text-xl">
+          <h2 className='text-3xl mt-[30px] text-blue-500'>Create Token</h2>
+          <div className="max-w-md mx-auto p-6 bg-blue-500 rounded-md shadow-md text-xl">
             <form onSubmit={HandleCreateNewToken}>
               <input
                 type="text"
@@ -146,13 +138,12 @@ const CreateToken = () => {
               />
 
               <div className="flex flex-col gap-2 mt-4 justify-center items-center">
-
-                <span className='text-xs bg-yellow-200'>You will be charged 1 ICP to create your token</span>
+                <span className='text-xs bg-yellow-200 text-blue-500'>You will be charged 1 ICP to create your token</span>
                 {
                   isLoading ? <ClipLoader color="orange" size={35} /> :
                     <button
                       type="submit"
-                      className=" w-full mt-2 hover:bg-orange-400 cursor-pointer p-2 border border-black text-black rounded-md "
+                      className=" w-full mt-2 hover:bg-orange-400 cursor-pointer p-2 border border-black text-white rounded-md bg-orange-500"
                     >
                       Submit
                     </button>
@@ -177,8 +168,6 @@ const CreateToken = () => {
             </a>
           </div>
         </div>
-
-
       }
     </>
   )

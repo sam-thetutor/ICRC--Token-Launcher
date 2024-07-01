@@ -24,7 +24,7 @@ console.log("uuuuu :",Number(userICPBalance))
       <div>
         <button
           type="button"
-          className="inline-flex justify-center w-full rounded-md  px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+          className="inline-flex justify-center w-full rounded-md  px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
           id="options-menu"
           aria-haspopup="true"
           aria-expanded="true"
@@ -42,7 +42,7 @@ console.log("uuuuu :",Number(userICPBalance))
       >
         <div className="py-1 justify-center items-center flex flex-col" role="none">
           <div className='flex flex-col gap-1 p-1'>
-          <div className='flex gap-1 justify-center items-center'>
+          <div className='flex gap-1 justify-center text-black items-center'>
             {principal&&shorten17String(principal?.toString())}
             <CopyButton textToCopy={principal?.toString()} />
           </div>
